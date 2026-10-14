@@ -16,6 +16,7 @@ export default function SubmitDeal(){
   }catch(error){setStatus(error instanceof Error?error.message:'Помилка надсилання')}finally{setBusy(false)}
  }
  return <section className="sectionBlock" id="submit-deal"><div className="sectionHeading"><div><div className="eyebrow">FLIPRADAR · COMMUNITY</div><h2>Запропонувати оголошення</h2><p>Підтвердіть email, увійдіть в акаунт і надішліть реальну пропозицію. Публікуємо тільки після перевірки. До 3 пропозицій на добу.</p></div></div>
+ <div className="feedEmpty"><h3>Заробляй із FlipRadar · 85/15</h3><p>Якщо ти привів покупця за партнерським оголошенням і продавець підтвердив продаж та сплатив погоджену винагороду, 85% винагороди належить тобі, 15% — FlipRadar. Це частки від винагороди, а не ціни товару. Наразі система відстеження угод і виплат ще розробляється: звичайне подання оголошення не створює права на автоматичну виплату.</p><p>Для українських продавців: надсилай справжні пропозиції з актуальною ціною. Після перевірки вони можуть потрапити в каталог на 3 дні.</p></div>
  <form onSubmit={submit} className="feedFilters">
  <input name="title" required minLength={3} maxLength={180} placeholder="Назва товару" aria-label="Назва товару"/>
  <input name="model" required minLength={2} maxLength={120} placeholder="Модель" aria-label="Модель"/>
