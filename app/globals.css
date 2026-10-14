@@ -20,3 +20,21 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;ba
 .marketLink b{font-size:12px}.marketLink span{font-size:9px;color:#8cc9c1;line-height:1.4}
 @media(max-width:640px){.marketGrid{grid-template-columns:1fr}.marketLink{min-height:60px;gap:5px}}
 @media(prefers-reduced-motion:reduce){.heroVisual:before{animation:none}*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Tech deal analyzer */
+.techLayout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.techControls,.techResult{border:1px solid #31544b;border-radius:16px;background:linear-gradient(145deg,#142128,#0c1319);padding:24px}
+.techControls{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.techControls label{display:flex;flex-direction:column;gap:8px;color:#a5b9ba;font-size:11px}
+.techControls label:first-child,.techActions{grid-column:1/-1}
+.techControls input,.techControls select{height:44px;border:1px solid #33504e;background:#0b1419;border-radius:9px;color:#f0f7f4;padding:0 12px;min-width:0;width:100%;font:12px Manrope,sans-serif;color-scheme:dark}
+.techActions{display:flex;flex-wrap:wrap;gap:9px}.techActions .ghostBtn{flex:1}
+.techResult{background:radial-gradient(ellipse at 100% 0%,#b6ff6112,transparent 60%),#111b20}
+.techSignal{font-size:clamp(20px,2.4vw,29px);font-weight:800;color:var(--lime);margin:10px 0 22px}
+.techNumbers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.techNumbers>div{border:1px solid #29443f;background:#0b1519;border-radius:11px;padding:16px}
+.techNumbers span{display:block;font-size:10px;color:#94a6a7;margin-bottom:11px}
+.techNumbers strong{font-size:clamp(18px,2vw,25px);letter-spacing:-.7px}
+.techWarning{margin:19px 0 0;color:#a2b3ae;font-size:10px;line-height:1.8}
+@media(max-width:800px){.techLayout{grid-template-columns:1fr}}
+@media(max-width:480px){.techControls,.techResult{padding:16px}.techControls{grid-template-columns:1fr}.techControls label:first-child,.techActions{grid-column:auto}.techNumbers{grid-template-columns:1fr 1fr}.techNumbers strong{font-size:18px}}
