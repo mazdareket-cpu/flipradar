@@ -8,7 +8,7 @@ const adminIds=(process.env.FLIPRADAR_ADMIN_USER_IDS||'').split(',').map(x=>x.tr
 const fail=(status:number,error:string)=>NextResponse.json({error},{status});
 async function authorize(req:NextRequest){
  if(!url||!publishable||!secret||adminIds.length===0)return null;
- const origin=req.headers.get('origin');if(!origin||new URL(origin).host!==req.nextUrl.host)return null;
+ const origin=req.headers.get('origin');if(req.method!=='GET' && (!origin||new URL(origin).host!==req.nextUrl.host))return null;
  const token=req.headers.get('authorization')?.match(/^Bearer (.+)$/)?.[1];if(!token)return null;
  const auth=createClient(url,publishable,{auth:{persistSession:false,autoRefreshToken:false}});
  const {data:{user},error}=await auth.auth.getUser(token);
