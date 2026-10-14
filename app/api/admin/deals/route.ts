@@ -34,6 +34,6 @@ export async function PATCH(req:NextRequest){
  const {data:existing,error:readError}=await db.from('public_deals').select('id,source_url,asking_price,reference_price').eq('id',body.id).eq('published',false).single();
  if(readError||!existing)return fail(404,'Чернетку не знайдено');
  if(!existing.source_url?.startsWith('https://')||Number(existing.asking_price)<=0||Number(existing.reference_price)<=0)return fail(400,'Перевірте посилання і ціни');
- const {error}=await db.from('public_deals').update({estimated_costs:costs,note:body.note.trim(),condition:'Перевірено модератором',observed_at:new Date().toISOString(),expires_at:new Date(Date.now()+86400000).toISOString(),published:true}).eq('id',body.id).eq('published',false);
+ const {error}=await db.from('public_deals').update({estimated_costs:costs,note:body.note.trim(),condition:'Перевірено модератором',observed_at:new Date().toISOString(),expires_at:new Date(Date.now()+3*24*60*60*1000).toISOString(),published:true}).eq('id',body.id).eq('published',false);
  return error?fail(500,'Не вдалося опублікувати'):NextResponse.json({ok:true});
 }
