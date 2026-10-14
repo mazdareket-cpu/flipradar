@@ -15,11 +15,11 @@ export default function SubmitDeal(){
    setStatus('Дякуємо! Пропозиція очікує перевірки.');form.reset();
   }catch(error){setStatus(error instanceof Error?error.message:'Помилка надсилання')}finally{setBusy(false)}
  }
- return <section className="sectionBlock" id="submit-deal"><div className="sectionHeading"><div><div className="eyebrow">FLIPRADAR · COMMUNITY</div><h2>Запропонувати оголошення</h2><p>Увійдіть в акаунт і надішліть реальну пропозицію. Публікуємо тільки після перевірки. До 3 пропозицій на добу.</p></div></div>
+ return <section className="sectionBlock" id="submit-deal"><div className="sectionHeading"><div><div className="eyebrow">FLIPRADAR · COMMUNITY</div><h2>Запропонувати оголошення</h2><p>Підтвердіть email, увійдіть в акаунт і надішліть реальну пропозицію. Публікуємо тільки після перевірки. До 3 пропозицій на добу.</p></div></div>
  <form onSubmit={submit} className="feedFilters">
  <input name="title" required minLength={3} maxLength={180} placeholder="Назва товару" aria-label="Назва товару"/>
  <input name="model" required minLength={2} maxLength={120} placeholder="Модель" aria-label="Модель"/>
- <input name="source" required maxLength={80} placeholder="Майданчик (OLX тощо)" aria-label="Майданчик"/>
+ <select name="category" aria-label="Категорія" defaultValue="Смартфони"><option>Смартфони</option><option>Компʼютери</option><option>Автозапчастини</option><option>Інструменти</option><option>Велосипеди</option><option>Одяг та взуття</option><option>Меблі</option><option>Зоотовари</option><option>Інше</option></select><input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:"absolute",left:"-10000px"}}/><input name="source" required maxLength={80} placeholder="Майданчик (OLX тощо)" aria-label="Майданчик"/>
  <input name="source_url" type="url" required pattern="https://.*" placeholder="https://... посилання" aria-label="Посилання"/>
  <input name="asking_price" type="number" required min="1" step="0.01" placeholder="Ціна продавця, грн" aria-label="Ціна продавця"/>
  <input name="reference_price" type="number" required min="1" step="0.01" placeholder="Орієнтир ринку, грн" aria-label="Орієнтир ринку"/>
