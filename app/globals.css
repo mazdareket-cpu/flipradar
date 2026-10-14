@@ -66,3 +66,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;ba
 .ledgerTable td small{display:block;color:#8ea29c;font-size:10px;margin-top:5px}.ledgerSell{display:flex;gap:6px}.ledgerSell input{width:125px}.ledgerSell button{background:var(--lime);border:0;border-radius:8px;padding:9px;color:#102016;cursor:pointer;font-size:10px;font-weight:800}.ledgerMessage{border:1px solid #4d7658;border-radius:8px;padding:12px;color:#d9f9cb}.ledgerFoot{margin-top:12px}
 @media(max-width:900px){.ledgerStats{grid-template-columns:repeat(2,1fr)}.ledgerForm{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.ledgerStats{gap:8px}.ledgerStats>div,.ledgerBox{padding:14px}.ledgerForm{grid-template-columns:1fr}.ledgerTop{align-items:flex-start;flex-direction:column}}
+
+/* Supabase auth panel */
+.accountCard{max-width:560px;background:linear-gradient(135deg,#142229,#0b141a);border:1px solid #34564b;border-radius:15px;padding:25px}
+.accountCard h3{margin:0 0 12px;font-size:19px}.accountCard p{font-size:11px;color:#a5bbb5;line-height:1.8}
+.accountForm{display:grid;gap:14px;margin:20px 0}.accountForm label{display:grid;gap:8px;color:#9fb5af;font-size:11px}.accountForm input{width:100%;border:1px solid #37524c;background:#0b151b;color:#effaf3;padding:13px;border-radius:9px;font:12px Manrope,sans-serif}.accountForm button{justify-self:start}.accountSwitch{background:none;border:0;color:var(--lime);padding:5px 0;cursor:pointer;font:11px Manrope,sans-serif}.accountMessage{padding:12px;border:1px solid #486b55;border-radius:9px}
+@media(max-width:540px){.accountCard{padding:17px}}
