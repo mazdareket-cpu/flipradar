@@ -1,0 +1,6 @@
+# Netlify supports Next.js through its OpenNext integration.
+[build]
+  command = "npm run build"
+[build.environment]
+  NODE_VERSION = "22"
+# Configure secrets in Netlify UI, never in this file.
