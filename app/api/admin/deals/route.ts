@@ -17,7 +17,7 @@ async function authorize(req:NextRequest){
 export async function GET(req:NextRequest){
  const db=await authorize(req);if(!db)return fail(403,'Немає доступу');
  const {data,error}=await db.from('public_deals').select('id,title,model,category,source,source_url,asking_price,reference_price,estimated_costs,condition,note,created_at,expires_at,published').eq('published',false).order('created_at',{ascending:false}).limit(100);
- if(error)return fail(500,'Помилка завантаження');
+ if(error){console.error('Admin deals query failed', {code:error.code, message:error.message});return fail(500,'Помилка Supabase ('+(error.code||'unknown')+'). Перевірте серверні журнали Vercel');}
  return NextResponse.json({items:data},{headers:{'Cache-Control':'no-store'}});
 }
 export async function PATCH(req:NextRequest){
