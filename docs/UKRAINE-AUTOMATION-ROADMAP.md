@@ -21,8 +21,14 @@
 - Refresh or unpublish stale products, respecting source update frequency and the 72h public listing policy.
 - Referral tracking with random referral IDs, seller confirmation, dispute/return window, payout ledger and anti-fraud controls; integrate a licensed payment provider after legal/tax review.
 
+## Implemented first integration stage
+- Admin-only POST /api/admin/import-feed accepts 1–30 JSON items with title, model, category, source, source_url, asking_price, reference_price, optional currency=UAH.
+- The /admin page has a JSON import form. Imported records remain unpublished and require moderator approval.
+- Source URLs are deduplicated against the existing public_deals source_url unique index.
+- Import is manual/batch for now; automatic scheduled fetching from seller feeds requires a seller-approved feed URL and access terms. The OLX Partner API requires seller authorization; this importer does not bypass it.
+
 ## Current state
 - User-submitted listings and manual moderation are implemented.
 - Public listings expire 72h after approval.
 - The 85/15 split is communicated in the submission UI but **not yet executable**.
-- No automated Ukrainian marketplace discovery, feed imports, referral attribution or commission collection is active.
+- Admin-initiated batch feed import is implemented. No unattended scheduled Ukrainian marketplace discovery, seller OAuth, referral attribution or commission collection is active.
