@@ -1,0 +1,42 @@
+name: European eBay candidate discovery
+on:
+  workflow_dispatch:
+    inputs:
+      query:
+        description: Search term
+        required: false
+        default: iPhone 13
+  schedule:
+    - cron: '23 7,15 * * *'
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        market: [DE, FR, IT, ES, NL, IE]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch unverified candidates
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+          SEARCH_QUERY: ${{ inputs.query || 'iPhone 13' }}
+        run: |
+          if [ -z "$EBAY_CLIENT_ID" ] || [ -z "$EBAY_CLIENT_SECRET" ]; then
+            echo "::notice::eBay API credentials not configured; skipping discovery."
+            exit 0
+          fi
+          node scripts/ebay-candidates.mjs "${{ matrix.market }}" "$SEARCH_QUERY"
+      - name: Archive unverified candidates
+        uses: actions/upload-artifact@v4
+        with:
+          name: ebay-${{ matrix.market }}-candidates
+          path: candidates/ebay-*-candidates.json
+          if-no-files-found: ignore
+          retention-days: 7
