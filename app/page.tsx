@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react';
 import DealHunter from './DealHunter';
 import PublicDeals from './PublicDeals';
 import SubmitDeal from './SubmitDeal';
+import ContributorDashboard from './ContributorDashboard';
 import ResaleLedger from './ResaleLedger';
 import AccountPanel from './AccountPanel';
 
@@ -116,7 +117,7 @@ export default function Home() {
       </div></div>
     </section>
     <PublicDeals/>
-    <SubmitDeal/>
+    <ContributorDashboard/><SubmitDeal/>
     <DealHunter/>
     <ResaleLedger/>
     <AccountPanel/>
