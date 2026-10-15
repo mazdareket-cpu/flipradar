@@ -3,6 +3,7 @@
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react';
 import DealHunter from './DealHunter';
 import PublicDeals from './PublicDeals';
+import UkraineDiscovery from './UkraineDiscovery';
 import SubmitDeal from './SubmitDeal';
 import ResaleLedger from './ResaleLedger';
 import AccountPanel from './AccountPanel';
@@ -115,6 +116,7 @@ export default function Home() {
         <p className="techWarning">⚠ Ринкова ціна введена вручну. Перевір модель, памʼять, стан батареї, блокування, комплектність і реальну ціну продажу. Результат не гарантує прибутку.</p>
       </div></div>
     </section>
+    <UkraineDiscovery/>
     <PublicDeals/>
     <SubmitDeal/>
     <DealHunter/>
