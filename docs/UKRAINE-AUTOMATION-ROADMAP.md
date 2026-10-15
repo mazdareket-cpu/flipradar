@@ -1,11 +1,13 @@
 # FlipRadar Ukraine-first automation and referral rollout
 
-## Commission policy (proposed, not yet a payment feature)
-- A seller may offer a success fee for an independently confirmed completed sale.
-- The person whose tracked referral produced the buyer receives **85%** of the fee; FlipRadar receives **15%**.
-- Example: seller-funded fee 1000 UAH -> 850 UAH referrer, 150 UAH platform.
-- Never present 15% as a fee on the product's price. No commission is due for a click or an unverified deal.
-- The existing submission flow does NOT track referrals, completed orders, escrow, or payments. No automatic payouts are live.
+## Commission policy (updated 2026-10-15; proposal only)
+- The platform fee is **1% of the contributor's gross seller-funded success reward**, NOT 1% of the product's price.
+- Contributor receives the remaining **99%** of that reward.
+- Example: seller-funded reward 500 UAH -> 495 UAH contributor, 5 UAH platform.
+- Supersedes the earlier 85/15 draft. No fee is due for a click, a submitted deal, or an unverified sale.
+- Implemented: shared calculation policy in lib/reward-policy.ts and an illustrative calculator in app/SubmitDeal.tsx.
+- NOT implemented: seller opt-in and reward commitment, attribution, proof of sale, dispute window, cash collection, payouts, or actual account balances. No earnings should be advertised as payable.
+- Before real payouts: obtain seller's explicit agreement and permitted attribution source; implement idempotent server-side transaction ledger, buyer/seller confirmation, fraud review, dispute/return policy and licensed payment rails, with legal/tax review for Ukraine.
 
 ## Ukraine-only supply sources
 1. Existing authenticated user submissions -> private draft -> moderator checks live source, price, costs and condition -> 72h public listing.
@@ -30,5 +32,5 @@
 ## Current state
 - User-submitted listings and manual moderation are implemented.
 - Public listings expire 72h after approval.
-- The 85/15 split is communicated in the submission UI but **not yet executable**.
+- The 99/1 reward split is communicated and calculated in the submission UI but **not yet executable**.
 - Admin-initiated batch feed import is implemented. No unattended scheduled Ukrainian marketplace discovery, seller OAuth, referral attribution or commission collection is active.
